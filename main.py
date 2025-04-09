@@ -1,14 +1,14 @@
 import time
 from naoqi import ALProxy
 
-"""
+
 nao_ip = "127.0.0.1"
-nao_port = 59097
+nao_port = 9559
 """
 
-nao_ip = "172.18.16.31"
+nao_ip = "172.18.16.47"
 nao_port = 9559
-
+"""
 
 def speak(text):
     tts = ALProxy("ALTextToSpeech", nao_ip, nao_port)
