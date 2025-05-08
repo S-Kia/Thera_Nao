@@ -1,10 +1,10 @@
 # 🤖 NAO Physiotherapist Robot – Patient Feedback Module
 
-This branch is part of this repository that enables the **NAO humanoid robot** to act as a **physiotherapist**, guiding patients through exercises and collecting their feedback post-session.
+This branch of this repository enables the **NAO humanoid robot** to act as a **physiotherapist**, guiding patients through exercises and collecting their feedback post-session.
 
 ## 🧩 Project Purpose
 
-The focus of this module is to manage **post-session feedback** from patients using **voice interaction**, process their responses, and provide **supportive and motivating replies** — both pre-scripted and AI-generated via **Groq's LLM API**.
+This module focuses on managing post-session feedback from patients using voice interaction, processing their responses, and providing supportive and motivating replies, both prescripted and AI-generated via Groq's LLM API.
 
 ---
 
@@ -50,11 +50,11 @@ The focus of this module is to manage **post-session feedback** from patients us
 
 ## 🎙️ Patient Interaction Example
 
-**NAO:** Great job today! How do you feel after the session?
-**Patient:** I feel a little sore.
-**NAO:** That's normal. Some muscle soreness happens after therapy.
-**NAO:** Please wait a moment while I get some advice...
-**NAO (Groq-generated):** It’s completely normal to feel sore after exercising. Try to rest and stay hydrated, and it should ease by tomorrow.
+**NAO:** Great job today! How do you feel after the session? <br/>
+**Patient:** I feel a little sore. <br/>
+**NAO:** That's normal. Some muscle soreness happens after therapy. <br/>
+**NAO:** Please wait a moment while I get some advice... <br/>
+**NAO (Groq-generated):** It’s completely normal to feel sore after exercising. Try to rest and stay hydrated, and it should ease by tomorrow. <br/>
 
 ---
 
@@ -88,7 +88,7 @@ NAO uses Python 2.7, while Groq's API requires Python 3.7+. To solve this, the p
 python feedback_session_start.py
 ```
 
-3. Make sure Python 3.8+ environment (with Groq API access) is configured correctly for subprocess execution.
+3. Make sure a Python 3.8+ environment (with Groq API access) is configured correctly for subprocess execution.
 
 ---
 
@@ -104,5 +104,5 @@ python feedback_session_start.py
 
 ## 🧑‍💻 Maintainer
 
-**Module Owner:** Hadayet Ullah Razu (st20313374)
+**Module Owner:** Hadayet Ullah Razu (st20313374) <br/>
 **Responsibility:** Integrating patient feedback via speech recognition and LLM advice using Groq API.
