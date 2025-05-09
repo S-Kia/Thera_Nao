@@ -14,3 +14,5 @@ This part enables a NAO robot to act as a physiotherapist, collecting verbal fee
 - `groq_wrapper.py`: Bridges Python 2.7 (NAO environment) with Groq's API via a subprocess.
 - `groq_runner.py`: Runs in Python 3.8 Anaconda to fetch Groq LLM responses and return them to the wrapper.
 - `connection.py`: Handles connection and disconnection to the NAO robot.
+
+👉 **Go to the `feedback` branch to see more.**
