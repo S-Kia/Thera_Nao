@@ -61,12 +61,16 @@ This module allows the **NAO robot** to recognize returning and new patients bas
 ```bash
 python run_nao_greeting.py
 
+---
+
 ##✅ Requirements
 NAO robot with naoqi SDK (Python 2.7)
 
 Python 2.7 (for NAO)
 
 Python 3.x for development purposes
+
+---
 
 ##🧑‍💻 Maintainer
 Module Owner: Meghana Lokesh (st20310192) <br/>
