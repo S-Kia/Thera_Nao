@@ -29,6 +29,11 @@ This module allows the **NAO robot** to recognize returning and new patients bas
 
 ## 📂 Project Structure
 
+```bash
+├── connection.py # Connect/disconnect NAO robot
+├── nao_greeting.py # Handles greeting and patient identification process
+├── run_nao_greeting.py # Entry point to start the feedback session
+```
 
 ---
 
