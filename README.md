@@ -39,4 +39,62 @@ The system uses several components to achieve the interactive experience:
 5. **Conversation Flow**:
    - The robot follows a structured conversation flow, starting with patient ID recognition, then moving to various feedback and interaction prompts.
 
-### Diagram:
+
+## Intents and Keywords
+
+The system uses various intents and keywords to identify the patient's input and determine the appropriate response. Here are the key intents and corresponding keywords:
+
+### Patient ID
+- **Intents**: Identifies whether the patient is new or returning.
+- **Keywords**: 
+  - 1001, 1002, 1003 (Example patient IDs)
+
+### Visit Reason
+- **Intents**: Determines the reason for the patient's visit.
+- **Keywords**: 
+  - backpain, neckpain, handpain (Example visit reasons)
+
+### Pain Level
+- **Intents**: Asks the patient to rate their pain level.
+- **Keywords**: 
+  - 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 (Pain level scale)
+
+### Check Appointment
+- **Intents**: Checks the patient's appointment with the respective doctor.
+- **Keywords**: 
+  - meghna, theranao, jack (Example doctor names)
+
+### Mood Check
+- **Intents**: Asks the patient about their emotional state.
+- **Keywords**: 
+  - good, okay, tired, sad, happy
+
+### Last Session Feedback
+- **Intents**: Inquires about the patient's feedback on their last session.
+- **Keywords**: 
+  - better, same, worse
+
+### Wellness Goal
+- **Intents**: Determines the patient's wellness goals for the therapy.
+- **Keywords**: 
+  - flexibility, strength, pain relief, relaxation
+
+### Exercise Feedback
+- **Intents**: Asks the patient how they feel about the exercises.
+- **Keywords**: 
+  - easy, hard, manageable
+
+### Diet Check
+- **Intents**: Inquires whether the patient has been following their recommended diet.
+- **Keywords**: 
+  - yes, no, sometimes
+
+### Greeting
+- **Intents**: A simple thank you or goodbye message.
+- **Keywords**: 
+  - thankyou, thanks
+
+## Installation
+
+1.
+
