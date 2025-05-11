@@ -1,100 +1,73 @@
-# NAO Robot Patient Greeting and Interaction System
+# 🤖 NAO Greeting Robot – Patient Interaction Module
 
-This project is designed to implement a speech-based interaction system for a NAO robot that can recognize patient IDs and engage in a structured conversation with patients. The system aims to enhance the patient's experience during their visit to the physiotherapy clinic by providing voice-based interactions.
+This repository enables the **NAO humanoid robot** to engage with patients through voice recognition and provide greeting and feedback sessions post-therapy.
 
-## Table of Contents
-1. [System Overview](#system-overview)
-2. [System Architecture](#system-architecture)
-3. [Intents and Keywords](#intents-and-keywords)
-4. [Installation](#installation)
-5. [Usage](#usage)
-6. [Contributions](#contributions)
-7. [License](#license)
+## 🧩 Project Purpose
 
-## System Overview
-The NAO robot serves as an interactive assistant for patients, helping them check-in, provide feedback, and track their visit details (e.g., pain level, visit reason, and wellness goals). The robot uses speech recognition to identify patient IDs and interacts based on predefined intents and keywords. It guides the patient through a series of prompts to collect essential information and then shares responses based on the collected data.
+This module allows the **NAO robot** to recognize returning and new patients based on their **patient ID** and engage in structured voice-based conversations. The robot greets the patient and responds according to predefined intents (e.g., patient status, session feedback).
 
-### Features:
-- **Patient ID recognition**: The robot identifies whether the patient is returning or new by recognizing their ID.
-- **Contextual conversation**: The robot asks questions related to the patient's condition, visit reason, and wellness goals.
-- **Feedback system**: The robot allows the patient to rate their pain level and share session feedback.
-- **Customized responses**: Based on the recognized keywords, the robot provides relevant responses.
+---
 
-## System Architecture
-The system uses several components to achieve the interactive experience:
+## 💬 Features
 
-1. **Speech Recognition (ALSpeechRecognition)**:
-   - The robot listens to the patient's spoken responses using the speech recognition module.
-   - It converts the spoken input into text and matches it against predefined keywords for determining intents.
+- **Voice Interaction:** NAO uses voice recognition to identify patients and engage in contextual conversations.
+- **Greeting and Feedback:** NAO greets patients based on their patient ID and asks for feedback after the session.
+- **Keyword-Based Responses:** NAO responds using predefined natural responses based on detected keywords.
+- **Patient ID Recognition:** NAO distinguishes between new and returning patients using speech recognition.
 
-2. **Text-to-Speech (ALTextToSpeech)**:
-   - The robot provides spoken feedback to the patient based on the recognized keywords and determined intent.
-   
-3. **Memory Proxy (ALMemory)**:
-   - Stores recognized speech input and patient information for processing and context management.
-   
-4. **Intent Recognition**:
-   - The recognized speech is matched with predefined intents (e.g., patient ID, pain level) to guide the flow of the conversation.
-   
-5. **Conversation Flow**:
-   - The robot follows a structured conversation flow, starting with patient ID recognition, then moving to various feedback and interaction prompts.
+---
+
+## ⚙️ System Architecture
+
+### 🧠 High-Level Flow
+
+1. **`nao_greeting.py`**: Handles patient greeting and feedback interaction logic, including speech recognition and response generation.
+2. **`connection.py`**: Manages the connection and disconnection to the NAO robot.
+3. **`run_nao_greeting.py`**: Starts the NAO greeting session and triggers the entire process.
+
+---
+
+## 📂 Project Structure
 
 
-## Intents and Keywords
+---
 
-The system uses various intents and keywords to identify the patient's input and determine the appropriate response. Here are the key intents and corresponding keywords:
+## 🎙️ Patient Interaction Example
 
-### Patient ID
-- **Intents**: Identifies whether the patient is new or returning.
-- **Keywords**: 
-  - 1001, 1002, 1003 (Example patient IDs)
+**NAO:** Welcome back! Please tell me your patient ID. <br/>
+**Patient:** My ID is 1001. <br/>
+**NAO:** Hello, patient 1001! How are you feeling today? <br/>
+**Patient:** I'm feeling better. <br/>
+**NAO:** That's great to hear! Keep up the good work! <br/>
 
-### Visit Reason
-- **Intents**: Determines the reason for the patient's visit.
-- **Keywords**: 
-  - backpain, neckpain, handpain (Example visit reasons)
+---
 
-### Pain Level
-- **Intents**: Asks the patient to rate their pain level.
-- **Keywords**: 
-  - 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 (Pain level scale)
+## 🧠 Intents and Keywords
 
-### Check Appointment
-- **Intents**: Checks the patient's appointment with the respective doctor.
-- **Keywords**: 
-  - meghna, theranao, jack (Example doctor names)
+| Intent              | Keywords                                      |
+| ------------------- | --------------------------------------------- |
+| greeting            | hello, hi, good morning, good afternoon       |
+| feeling             | feeling, sore, pain, tired, better            |
+| exercise_difficulty | hard, challenging, balance, squats           |
+| thanks              | thank, thanks for the session                 |
 
-### Mood Check
-- **Intents**: Asks the patient about their emotional state.
-- **Keywords**: 
-  - good, okay, tired, sad, happy
+---
 
-### Last Session Feedback
-- **Intents**: Inquires about the patient's feedback on their last session.
-- **Keywords**: 
-  - better, same, worse
+## 🚀 Getting Started
 
-### Wellness Goal
-- **Intents**: Determines the patient's wellness goals for the therapy.
-- **Keywords**: 
-  - flexibility, strength, pain relief, relaxation
+1. Connect to your NAO robot via `connection.py`.
+2. Start the greeting session with:
 
-### Exercise Feedback
-- **Intents**: Asks the patient how they feel about the exercises.
-- **Keywords**: 
-  - easy, hard, manageable
+```bash
+python run_nao_greeting.py
 
-### Diet Check
-- **Intents**: Inquires whether the patient has been following their recommended diet.
-- **Keywords**: 
-  - yes, no, sometimes
+##✅ Requirements
+NAO robot with naoqi SDK (Python 2.7)
 
-### Greeting
-- **Intents**: A simple thank you or goodbye message.
-- **Keywords**: 
-  - thankyou, thanks
+Python 2.7 (for NAO)
 
-## Installation
+Python 3.x for development purposes
 
-1.
-
+##🧑‍💻 Maintainer
+Module Owner: Meghana Lokesh (st20310192) <br/>
+Responsibility: Integrating patients greeting via speech recognition and guiding the interaction flow.
