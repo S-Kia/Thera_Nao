@@ -77,4 +77,5 @@ Python 3.x for development purposes
 ## 🧑‍💻 Maintainer
 
 Module Owner: Meghana Lokesh (st20310192) 
+
 Responsibility: Integrating patients greeting via speech recognition and guiding the interaction flow.
