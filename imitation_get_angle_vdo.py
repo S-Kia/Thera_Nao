@@ -2,15 +2,17 @@ import json
 import numpy as np
 import pandas as pd
 import math
+import os
 
 # Load the JSON file
-json_file_path = "data/results_vdo.json"
+json_file_path = "data/results_Ex1.json"
 with open(json_file_path, 'r') as file:
     data = json.load(file)
 
 joint_names = {int(k): v for k, v in data['meta_info']['keypoint_id2name'].items()}
 skeleton_links = data['meta_info']['skeleton_links']
 
+# Mapping to correlate names
 joint_mapping = {
     "LShoulderPitch": "left_shoulder",
     "LShoulderRoll": "left_shoulder",
@@ -26,6 +28,7 @@ joint_mapping = {
     "RKneePitch": "right_knee"
 }
 
+# Set joint limits using clamp()
 nao_joint_limits = {
     "LShoulderPitch": (-119.5, 119.5),
     "RShoulderPitch": (-119.5, 119.5),
@@ -44,6 +47,7 @@ nao_joint_limits = {
 def clamp(value, min_val, max_val):
     return max(min_val, min(value, max_val))
 
+# Calculate the angle of the elbow and knee
 def calculate_joint_angle(parent, joint, child):
     vec1 = np.array(parent[:3]) - np.array(joint[:3])
     vec2 = np.array(child[:3]) - np.array(joint[:3])
@@ -53,6 +57,7 @@ def calculate_joint_angle(parent, joint, child):
     angle_rad = np.arccos(np.clip(cos_angle, -1.0, 1.0))
     return 180 - np.degrees(angle_rad)
 
+# Calculate the angle of the shoulder and hip
 def calculate_pitch_roll(parent, joint, child):
     # Step 1: Convert to float arrays
     parent = np.array(parent, dtype=float)
@@ -126,7 +131,6 @@ def calculate_pitch_roll(parent, joint, child):
     pitch = math.degrees(pitch_rad)
 
     # Step 11: Compute roll (rotation in XY plane)
-
     Ry = np.array([[np.cos(pitch_rad), 0, np.sin(pitch_rad)],
                    [0, 1, 0],
                    [-np.sin(pitch_rad), 0, np.cos(pitch_rad)]])
@@ -149,13 +153,9 @@ def calculate_pitch_roll(parent, joint, child):
     return round(pitch, 2), round(roll, 2)
 
 
-# This function applies your final transformation for each joint,
-# THEN clamps to NAO’s valid range and returns a printable string.
+# Apply final joint transformation, clamp to NAO range, and return as string
 def offset_angle_string(joint_name: str, angle_value: float) -> str:
-    """
-    Returns the final string for the user, with sign flips + clamping to NAO limits.
-    """
-    # Apply your existing flips/offsets
+    # Apply offsets
     a = round(angle_value, 2)
 
     if joint_name == "LShoulderPitch":
@@ -195,10 +195,10 @@ def offset_angle_string(joint_name: str, angle_value: float) -> str:
         final_val = a
 
     else:
-        # Default, if you have any extra fallback
+        # Default
         final_val = a
 
-    # Now clamp the final_val to the NAO range, if known:
+    # Now clamp the final_val to the NAO range
     if joint_name in nao_joint_limits:
         min_lim, max_lim = nao_joint_limits[joint_name]
         final_val = clamp(final_val, min_lim, max_lim)
@@ -206,7 +206,7 @@ def offset_angle_string(joint_name: str, angle_value: float) -> str:
     return f"{joint_name}: {final_val:.2f}"
 
 
-# We'll create a sorted list for consistent output order
+# Sorted list for consistent output order
 joint_list_order = [
     "LShoulderPitch", "LShoulderRoll", "LElbowRoll",
     "RShoulderPitch", "RShoulderRoll", "RElbowRoll",
@@ -223,7 +223,7 @@ for frame_idx, frame in enumerate(data["instance_info"]):
     keypoints = frame["instances"][0]["keypoints"]
     raw_angles = {}
 
-    # Calculate joint angles but store them in raw_angles without special transformation
+    # Calculate joint angles but store them in raw_angles
     for joint_name, mapped_name in joint_mapping.items():
         joint_id = next((id for id, name in joint_names.items() if name == mapped_name), None)
         if joint_id is None or joint_id >= len(keypoints):
@@ -270,8 +270,6 @@ for frame_idx, frame in enumerate(data["instance_info"]):
                 elif "Roll" in joint_name:
                     raw_angles[joint_name] = roll
 
-            #print(parent_joint, joint_id, child_joint)
-            #print(keypoints[7][:3], keypoints[parent_joint], keypoints[joint_id], keypoints[child_joint])
 
     joint_angle_data = {"frame_id": frame.get("frame_id", frame_idx + 1)}
     for jn in joint_list_order:
@@ -280,11 +278,14 @@ for frame_idx, frame in enumerate(data["instance_info"]):
             joint_angle_data[jn] = angle_str
             print(jn, raw_angles[jn], angle_str)
 
-    #breakpoint()
     all_joint_angles.append(joint_angle_data)
 
 # Export to CSV
 df = pd.DataFrame(all_joint_angles)
-csv_filename = "joint_angles_all_frame.csv"
+
+# Derive CSV filename from JSON filename
+base_name = os.path.splitext(os.path.basename(json_file_path))[0]
+csv_filename = os.path.join(os.path.dirname(json_file_path), base_name + ".csv")
+
 df.to_csv(csv_filename, index=False)
 print(f"\nJoint angles (first instance per frame) exported to {csv_filename}!")

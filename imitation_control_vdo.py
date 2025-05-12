@@ -2,7 +2,7 @@ import csv
 from naoqi import ALProxy
 import main
 import math
-import time
+import argparse
 
 
 nao_ip = main.nao_ip
@@ -43,10 +43,15 @@ else:
 # Initialize joint angles with default values (0.0)
 joint_angles = {jn: 0.0 for jn in joint_names}
 
+# Parse command-line arguments to run: python3 xxx.py --input <input_directory>
+parser = argparse.ArgumentParser(description="Send joint angles to NAO from CSV file")
+parser.add_argument('--input', type=str, default="joint_angles_all_frame.csv",
+                    help='Path to the input CSV file (default: joint_angles_all_frame.csv)')
+args = parser.parse_args()
 
 # CSV file path
-#csv_file = "joint_angles_processed.csv"
-csv_file = "joint_angles_all_frame.csv"
+csv_file = args.input
+# csv_file = "joint_angles_all_frame.csv"   # Manual input
 
 # Move NAO to the "Stand" posture
 posture_service.goToPosture("Stand", 0.5)
@@ -55,8 +60,14 @@ posture_service.goToPosture("Stand", 0.5)
 try:
     with open(csv_file, "r") as infile:
         reader = csv.DictReader(infile)  # Read CSV as a dictionary
+        frame_count = 0
 
         for row in reader:
+            # Skip every second frame (process every x frame)
+            if frame_count %15  != 0:
+                frame_count += 1
+                continue
+
             for joint in joint_names:
                 if joint in row and row[joint].strip():  # Ensure the column exists and is not empty
                     try:
@@ -67,17 +78,19 @@ try:
             # Convert dictionary to ordered list of angles
             final_joint_angles = [joint_angles[jn] for jn in joint_names]
 
-            print "Parsed Joint Angles:", final_joint_angles
+            print "Parsed Joint Angles (Frame {}):".format(frame_count), final_joint_angles
             final_joint_angles = [round(math.radians(d), 4) for d in final_joint_angles]
 
             # Set time duration for each motion
-            time_lists = [1] * len(joint_names)  # 2 seconds for each joint
+            time_lists = [0.5] * len(joint_names)  # 0.5 seconds for each joint
 
             # Execute motion with parsed angles
             motion.angleInterpolation(joint_names, final_joint_angles, time_lists, True)
+
+            frame_count += 1
 
 except IOError:
     print "Error: Cannot open file '{}'.".format(csv_file)
     exit(1)
 
-posture_service.goToPosture("Stand", 1)
+print "Done"

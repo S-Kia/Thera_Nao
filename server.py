@@ -2,7 +2,6 @@ import json
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 from naoqi import ALProxy
 
-import imitation_control_actual
 import main
 import sounds
 import subprocess
@@ -27,6 +26,7 @@ imitation_control = None
 imitation_pose = None
 music = None
 
+# Define HTTP request
 class NaoRequestHandler(BaseHTTPRequestHandler):
     def do_POST(self):
         global latest_pose
@@ -93,16 +93,19 @@ class NaoRequestHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(response_message)
 
+# For update checking
 def get_status_message():
     global status_message
     return status_message
 
+# Run server
 def run(server_class=HTTPServer, handler_class=NaoRequestHandler, port=8000):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
     print(get_status_message() + " on port {}".format(port))
     httpd.serve_forever()
 
+# Get JSON, then command the robot
 def handle_command(command):
     global status_message, massage_hand, massage_upper
     global imitation_control, imitation_pose
@@ -110,13 +113,15 @@ def handle_command(command):
 
     action = command.get("action", "")
 
+    # TTS
     if action == "speak":
         text = command.get("text", "Hello")
         print("NAO Speaking: {}".format(text))
-#        tts.say(str(text))
+        tts.say(str(text))
         status_message = "Done"
         return "Spoken: {}".format(text)
 
+    # Walk
     elif action == "walk":
         distance = float(command.get("distance", 0.2))
         print("NAO Walking: {} meters".format(distance))
@@ -125,10 +130,11 @@ def handle_command(command):
         status_message = "Done"
         return "Walked: {} meters".format(distance)
 
+    # Hand massage
     elif action == "massage hand":
         if command.get("stage") == "start":
             if massage_hand is None:
-#                sounds.play("/home/nao/sounds/Amberlight.wav")
+                sounds.play("/home/nao/sounds/Amberlight.wav")
                 massage_hand = subprocess.Popen(["python", "massage_hand.py"])
             status_message = "Hand massage started"
         else:
@@ -140,10 +146,11 @@ def handle_command(command):
             status_message = "Hand massage stopped"
         return "Massage hand: updated"
 
+    # Upper back massage
     elif action == "massage upper back":
         if command.get("stage") == "start":
             if massage_upper is None:
-#                sounds.play("/home/nao/sounds/Amberlight.wav")
+                sounds.play("/home/nao/sounds/Amberlight.wav")
                 massage_upper = subprocess.Popen(["python", "massage_upper.py"])
             status_message = "Upper back massage started"
         else:
@@ -155,13 +162,13 @@ def handle_command(command):
             status_message = "Upper back massage stopped"
         return "Massage upper back: updated"
 
+    # Demo exercise
     elif action == "exercise demo":
         if command.get("stage") == "start":
-            for i in range(1):   # 4
-                imitation_control_actual.exercise(str(i+1), 0.08)
             status_message = "Started demo"
             return "Exercise demo: updated"
 
+    # Mirror the practice with the robot
     elif action == "exercise practice":
         if command.get("stage") == "start":
             if imitation_control is None:

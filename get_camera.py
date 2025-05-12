@@ -5,13 +5,14 @@ import main
 
 nao_ip = main.nao_ip
 
+# Get image frame from NAO robot
 def get_nao_camera_frame(cameraId):
     # Initialize the camera proxy
     camProxy = ALProxy("ALVideoDevice", nao_ip, 9559)
     resolution = 2  # VGA resolution (640x480)
     colorSpace = 13  # RGB color space
     fps = 30  # Frames per second
-    cameraId = cameraId  # Top camera 0, 1
+    cameraId = cameraId  # Top camera 0, Lower camera 1
     clientName = "camera_client"
 
     # Subscribe to the camera
@@ -32,17 +33,3 @@ def get_nao_camera_frame(cameraId):
     finally:
         # Unsubscribe to release the camera
         camProxy.unsubscribe(videoClient)
-
-
-"""
-# Example usage
-if __name__ == "__main__":
-    while True:
-        frame = get_nao_camera_frame()
-        if frame is not None:
-            cv2.imshow("NAO Camera", frame)
-        key = cv2.waitKey(1) & 0xFF
-        if key == ord("q"):
-            break
-    cv2.destroyAllWindows()
-"""
