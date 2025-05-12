@@ -1,0 +1,609 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: Robot Framework V3
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/groq:0.0.6@a83039d06df8e854a045835daa525e882aaa673a07eb76e153f592d5c130040b
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables:
+  - description: ''
+    id: 6bb0caf2-bd23-4133-bf55-3b4fefcf1c0d
+    name: symptom
+    selector:
+    - conversation
+    - symptom
+    value: ''
+    value_type: string
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: true
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: true
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: if-else
+      id: 17442205644720-source-1744315258431-target
+      selected: false
+      source: '17442205644720'
+      sourceHandle: source
+      target: '1744315258431'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1744315867887-source-1744220530992-target
+      selected: false
+      source: '1744315867887'
+      sourceHandle: source
+      target: '1744220530992'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1744220530992-source-answer-target
+      selected: false
+      source: '1744220530992'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: http-request
+      id: 1744220530992-source-17443136077170-target
+      selected: false
+      source: '1744220530992'
+      sourceHandle: source
+      target: '17443136077170'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: knowledge-retrieval
+      id: 1744220412837-source-1744315867887-target
+      selected: false
+      source: '1744220412837'
+      sourceHandle: source
+      target: '1744315867887'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1744220530992-source-17442205644720-target
+      source: '1744220530992'
+      sourceHandle: source
+      target: '17442205644720'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: iteration
+      id: 1745973755110-source-1745974389611-target
+      source: '1745973755110'
+      sourceHandle: source
+      target: '1745974389611'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+      id: 1744315258431-true-1745973755110-target
+      source: '1744315258431'
+      sourceHandle: 'true'
+      target: '1745973755110'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1745974389611'
+        sourceType: iteration-start
+        targetType: http-request
+      id: 1745974389611start-source-1745974499010-target
+      source: 1745974389611start
+      sourceHandle: source
+      target: '1745974499010'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables: []
+      height: 53
+      id: '1744220412837'
+      position:
+        x: 195.48221947015304
+        y: 120.07759522692095
+      positionAbsolute:
+        x: 195.48221947015304
+        y: 120.07759522692095
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1744220530992.text#}}'
+        desc: ''
+        selected: false
+        title: Answer
+        type: answer
+        variables: []
+      height: 103
+      id: answer
+      position:
+        x: 1308.6703689123917
+        y: 85.51453936956906
+      positionAbsolute:
+        x: 1308.6703689123917
+        y: 85.51453936956906
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0
+          mode: chat
+          name: llama3-70b-8192
+          provider: langgenius/groq/groq
+        prompt_template:
+        - edition_type: basic
+          id: 7352c500-eb3c-4932-86ca-4b550aa57d99
+          role: system
+          text: "Assume the role of a physiotherapist named Thera Nao. You are capable\
+            \ of both speaking and moving. Generate text without using any emotional\
+            \ inclination, symbols, or abbreviations.\n\nStoryboard\n1. Summarize\
+            \ the Problem\n\"Your name is Razu\nCC: 3 week ago, working on the computer\
+            \ intensely, pain score 2–3/10\nDx: Office syndrome\"\n\n2. Patient education\
+            \ in brief\n\n3. Procedure – Always ask 'Are you ready?' before starting\
+            \ each time.\n- Introduction: \"I have two steps for you today: massage\
+            \ and exercise. Which one would you like to start with?\"\n- Start with\
+            \ Hand Massage: \n\t\"Please place your hand between mine. I will start\
+            \ massaging your hand. Try to relax.\"\n\tI will play ambient music during\
+            \ the massage.\n\t\"Do you like this song?\"\n\t\"How does it feel?\"\n\
+            \t\"I will stop massage hand before moving to the next step.\"\n- Massage\
+            \ the Upper Back:\n\t\"Next, I’ll massage your upper back. Please turn\
+            \ around and face me. I’ll move to your back. Don’t worry—just relax and\
+            \ breathe slowly.\"\n\tTake some time to do this process.\n\t\"How does\
+            \ it feel?\"\n\n\t\"Then, I will stop massage upper back\"\n\n- Time for\
+            \ Exercise (2 parts: Demo 1–4 and Practice Time)\n\t\"Now it’s time to\
+            \ exercise 1-4. I will demonstrate the movements, and then you can follow\
+            \ me.\"\n\tThe robot will demonstrate each exercise and take some time.\n\
+            \t\"Then, It's time to the exercise practice. The robot will follow your\
+            \ posture.\"\n\t\"Great job!\"\n\n4. End of Session\n\t\"I will stop the\
+            \ exercise practice.\"\n\t\"Then, This section is complete. I will now\
+            \ guide you to the next part.\""
+        - id: 19eb7a60-5c38-47b1-a9ea-26fdd983bc5a
+          role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: NLP
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1744220530992'
+      position:
+        x: 814.7830931216355
+        y: 120.07759522692095
+      positionAbsolute:
+        x: 814.7830931216355
+        y: 120.07759522692095
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0
+          mode: chat
+          name: llama3-70b-8192
+          provider: langgenius/groq/groq
+        prompt_template:
+        - id: 7352c500-eb3c-4932-86ca-4b550aa57d99
+          role: system
+          text: 'Robot module control: Given the user input{{#sys.query#}} and the
+            robot output {{#1744220530992.text#}}, output a JSON object with the appropriate
+            "action" and relevant parameters. Respond with only the JSON object. **If
+            it''s not about robot control from the list below, do not output anything
+            that is not on the list.**
+
+
+            Command List:
+
+            {"action": "walk", "distance": distance}
+
+            {"action": "massage hand", "stage": "start/stop"}
+
+            {"action": "massage upper back", "stage": "start/stop"}
+
+            {"action": "exercise demo", "stage": "start/stop"}
+
+            {"action": "exercise practice", "stage": "start/stop"}
+
+            {"action": "posture", "type": "stand/sit/crouch/stand_zero/lying_back/lying_belly"}
+
+            {"action": "gesture", "type": "wave/point/me/explain/yes/no/think/show_sky/show_floor/bow"}
+
+            {"action": "emotion", "type": "happy/sad/laugh"}
+
+            {"action": "wake"}
+
+            {"action": "rest"}
+
+
+            Generate massage or exercise only after confirmation from user. **If the
+            input is a question, do not perform the action.**
+
+
+            If it includes a stop command for the previous function— such as ''I''ll
+            stop the hand massage'', ''I''ll stop massaging your upper'' — It can
+            generate two commands: one for starting and one for stopping the previous
+            command.
+
+
+            If it contains both ''demo'' and ''practice'', it means active exercise
+            practice, not exercise demo.'
+        selected: false
+        title: Control robot
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '17442205644720'
+      position:
+        x: 1303.2529534068103
+        y: 423.91532068708614
+      positionAbsolute:
+        x: 1303.2529534068103
+        y: 423.91532068708614
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-23
+            key: ''
+            type: text
+            value: '{"action": "speak", "text": "{{#1744220530992.text#}}"}'
+          type: json
+        desc: ''
+        headers: Content-Type:application/json
+        method: POST
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: Nao_speak
+        type: http-request
+        url: http://host.docker.internal:8000/data
+        variables: []
+      height: 134
+      id: '17443136077170'
+      position:
+        x: 1303.2529534068103
+        y: 231.4198756346159
+      positionAbsolute:
+        x: 1303.2529534068103
+        y: 231.4198756346159
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is not
+            id: 1db438fd-401f-4749-8c72-b8725218a89b
+            value: '{}'
+            varType: string
+            variable_selector:
+            - '17442205644720'
+            - text
+          - comparison_operator: not contains
+            id: 695c29af-9b72-42eb-abec-f7997469e58c
+            value: unknown
+            varType: string
+            variable_selector:
+            - '17442205644720'
+            - text
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      height: 151
+      id: '1744315258431'
+      position:
+        x: 1619.7670815366669
+        y: 423.91532068708614
+      positionAbsolute:
+        x: 1619.7670815366669
+        y: 423.91532068708614
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        dataset_ids:
+        - F4WdAn/O3yHkE8xfK2Zwcg7sv9WUdfOr/zUvEClevP7N2RRxvt4MprElc4Ylbom+
+        desc: ''
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          reranking_model:
+            model: ''
+            provider: ''
+          top_k: 4
+        query_variable_selector:
+        - sys
+        - query
+        retrieval_mode: multiple
+        selected: false
+        title: Knowledge Retrieval
+        type: knowledge-retrieval
+      height: 91
+      id: '1744315867887'
+      position:
+        x: 541.4810776490586
+        y: 120.07759522692095
+      positionAbsolute:
+        x: 541.4810776490586
+        y: 120.07759522692095
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "import json\n\ndef parse_json_objects(text):\n    results = []\n\n\
+          \    # Normalize input by wrapping multi-objects in a list-like structure\n\
+          \    raw = text.strip()\n    if not raw.startswith('['):\n        raw =\
+          \ f'[{raw}]'  # Make it a valid JSON array\n\n    try:\n        parsed =\
+          \ json.loads(raw)\n        if isinstance(parsed, list):\n            results.extend(parsed)\n\
+          \        else:\n            results.append(parsed)\n    except json.JSONDecodeError\
+          \ as e:\n        results.append({\n            \"error\": str(e),\n    \
+          \        \"raw\": text\n        })\n\n    return {\"results\": results}\n\
+          \ndef main(text):\n    return parse_json_objects(text)"
+        code_language: python3
+        desc: ''
+        outputs:
+          results:
+            children: null
+            type: array[object]
+        selected: false
+        title: Code
+        type: code
+        variables:
+        - value_selector:
+          - '17442205644720'
+          - text
+          variable: text
+      height: 53
+      id: '1745973755110'
+      position:
+        x: 1984.6753673104758
+        y: 455.8996119003666
+      positionAbsolute:
+        x: 1984.6753673104758
+        y: 455.8996119003666
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        error_handle_mode: terminated
+        height: 239
+        is_parallel: false
+        iterator_selector:
+        - '1745973755110'
+        - results
+        output_selector:
+        - '1745974499010'
+        - status_code
+        output_type: array[number]
+        parallel_nums: 2
+        selected: false
+        start_node_id: 1745974389611start
+        title: Iteration
+        type: iteration
+        width: 450
+      height: 239
+      id: '1745974389611'
+      position:
+        x: 2386.8697275532845
+        y: 455.8996119003666
+      positionAbsolute:
+        x: 2386.8697275532845
+        y: 455.8996119003666
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 450
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1745974389611start
+      parentId: '1745974389611'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 2410.8697275532845
+        y: 523.8996119003666
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-4338
+            key: ''
+            type: text
+            value: '{{#1745974389611.item#}}'
+          type: json
+        desc: ''
+        headers: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1745974389611'
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 1
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: HTTP Request
+        type: http-request
+        url: http://host.docker.internal:8000/data
+        variables: []
+      height: 134
+      id: '1745974499010'
+      parentId: '1745974389611'
+      position:
+        x: 161.0809214052524
+        y: 65
+      positionAbsolute:
+        x: 2547.950648958537
+        y: 520.8996119003666
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+      zIndex: 1002
+    viewport:
+      x: -480.12082378806974
+      y: 33.89463635454183
+      zoom: 0.5979098983880643
