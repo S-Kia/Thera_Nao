@@ -79,19 +79,17 @@ Thera_Nao/
 1. Run Dify using Docker and import `Thera_nao.yml`  
 2. Select your preferred LLM in Dify  
 3. Edit the NAO IP address in `main.py` (Python 2.7)  
-4. Copy the contents of `/Lib/site-packages/cv2/data` to your local environment if using OpenCV Haar cascades  
-5. Run `server.py` using Python 2.7, or execute it via a Python 3 subprocess wrapper  
-6. Interact with the robot through the Dify interface
+4. Copy the contents of `/Lib/site-packages/cv2/data` to your local environment if using OpenCV Haar cascades
+5. Change the path of the Python 3 subprocess execution in `server.py`
+6. Run `server.py` using Python 2.7
+7. Interact with the robot through the Dify interface
 
 ---
 
-## 🧪 Limitations & Future Work
-
-- Replace NAO with more advanced hardware
+## 🧪 Future Work
+- Replace NAO with more advanced robot
 - Integrate stereo/depth cameras for better pose accuracy
 - Add speech-to-text (STT) and text-to-speech (TTS) for fluid interaction
-- Improve motion tracking latency
-- Conduct clinical trials for real-world validation
 
 ---
 
