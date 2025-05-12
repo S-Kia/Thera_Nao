@@ -51,17 +51,17 @@
 
 ```
 Thera_Nao/
-├── main.py                     # Set IP address and port, basic NAO functions (e.g., speak, walk)
-├── server.py                   # HTTP request handler for robot control
-├── get_camera.py               # Fetch image from NAO robot
-├── massage_hand.py             # Detect hand via OpenCV and perform hand massage
-├── massage_upper.py            # Detect upper body via OpenCV and perform upper back massage
-├── sounds.py                   # Play ambient music
-├── imitation_get_angle_vdo.py # Convert JSON output from MMPose to joint angles (CSV)
-├── imitation_control_vdo.py   # Read angles from CSV file and control robot
-├── imitation_control_actual.py# Demo exercise and upper back massage execution
-├── imitation_mp_pose.py       # Use MediaPipe to extract landmarks
-├── imitation_mp_control.py    # Live pose mirroring via MediaPipe
+├── main.py                      # Set IP address and port, basic NAO functions (e.g., speak, walk)
+├── server.py                    # HTTP request handler for robot control
+├── get_camera.py                # Fetch image from NAO robot
+├── massage_hand.py              # Detect hand via OpenCV and perform hand massage
+├── massage_upper.py             # Detect upper body via OpenCV and perform upper back massage
+├── sounds.py                    # Play ambient music
+├── imitation_get_angle_vdo.py   # Convert JSON output from MMPose to joint angles (CSV)
+├── imitation_control_vdo.py     # Read angles from CSV file and control robot
+├── imitation_control_actual.py  # Demo exercise and upper back massage execution
+├── imitation_mp_pose.py         # Use MediaPipe to extract landmarks
+├── imitation_mp_control.py      # Live pose mirroring via MediaPipe
 ```
 
 ---
