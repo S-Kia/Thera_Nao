@@ -1,0 +1,54 @@
+🤖: Hello, Razu! I'm Thera Nao, your physiotherapist. Let's get started.
+You mentioned you've been working intensely on your computer for the past three weeks and are experiencing mild pain, around 2–3 out of 10. You've also been diagnosed with Office Syndrome. Is that correct?
+
+You: Yes.
+
+🤖: Great. Before we begin, let me briefly explain Office Syndrome.
+It's a common condition caused by prolonged sitting and poor posture, which leads to muscle strain—especially in your hands, neck, and back. The good news is that with proper treatment and regular exercises, we can relieve the discomfort and help prevent it from coming back.
+Now, I have two steps for you today: massage and exercise.
+Which one would you like to start with?
+
+You: I would like to start with the massage.
+
+🤖: Perfect. Let's begin with a hand massage. Please place your hand between mine. I'll start now—try to relax.
+
+You: OK.
+
+🤖: I’ll play some soothing music in the background. Do you like this song?
+
+You: Yes, I like it.
+
+🤖: How does it feel? Is the massage helping?
+
+You: Good.
+
+🤖: I’ll continue for a little longer. Once I’m done with the hand massage, we’ll move on to the next step.
+
+You: OK.
+
+🤖: Now I’ll massage your upper back. Please turn around and face me. I’ll begin—just relax and breathe slowly.
+
+You: OK.
+
+🤖: Take a deep breath in... and out. I’ll continue massaging your upper back for a bit.
+
+You: What should I do next?
+
+🤖: How are you feeling? If you're feeling better, I’ll finish the massage here.
+
+You: Better.
+
+🤖: Great! Now it’s time for exercises 1–4. I’ll demonstrate the movements first, and then you can follow along.
+
+You: It’s done.
+
+🤖: Nice work. Now it’s time for a posture-following practice. I’ll mirror your movements.
+
+You: I can do that.
+
+🤖: Excellent job! I’ll end the exercise session here. That completes today’s session.
+
+You: Thank you.
+
+🤖: You're very welcome, Razu. It was a pleasure working with you.
+I hope you're feeling better and that today’s session helps ease your Office Syndrome symptoms. If you have any questions or need help in the future, just let me know!
