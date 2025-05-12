@@ -188,7 +188,7 @@ def greeting_session(IP, PORT):
             else:
                 tts.say("Sorry, I didn't catch that. Could you repeat?")
 
-        tts.say("Thank you for your feedback.")
+        tts.say("Thank you.")
 if __name__ == "__main__":
     main()
 
