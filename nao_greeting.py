@@ -152,7 +152,7 @@ def say_reaction(tts, word):
         tts.say(RESPONSES[word])
         print("NAO:", RESPONSES[word])
 
-def initial_feedback_session(IP, PORT):
+def greeting_session(IP, PORT):
     tts = ALProxy("ALTextToSpeech", IP, PORT)
     animated_speech = ALProxy("ALAnimatedSpeech", IP, PORT)
     speech_recognition = ALProxy("ALSpeechRecognition", IP, PORT)
