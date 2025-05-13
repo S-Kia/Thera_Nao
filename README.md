@@ -6,7 +6,7 @@
 - 💬 **Feedback Module**: Collects patient feedback and provides personalized follow-up.
 
 
-Patient-driven workflow
+**Patient-driven workflow**
 ![image](https://github.com/user-attachments/assets/2a93a39d-eef4-4b8a-b324-d53a45dffc40)
 
 🎥 **[YouTube Demo Video](https://youtube.com/your_demo_link_here)**
