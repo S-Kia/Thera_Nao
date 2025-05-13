@@ -1,5 +1,11 @@
 # 🤖 Thera NAO – Multimodal AI Physiotherapy Robot System
 
+**Thera NAO** is an intelligent, multimodal physiotherapy robot system consisting of three integrated modules:
+- 🤝 **Greeting Module**: Greets and registers patients via voice interaction.
+- 💆 **Massage & Exercise Module**: Delivers guided massage and physical therapy routines.
+- 💬 **Feedback Module**: Collects patient feedback and provides personalized follow-up.
+
+
 Patient-driven workflow
 ![image](https://github.com/user-attachments/assets/2a93a39d-eef4-4b8a-b324-d53a45dffc40)
 
