@@ -1,9 +1,7 @@
 # 🤖 Thera NAO – Multimodal AI Physiotherapy Robot System
 
-![Thera NAO System Workflow]
-
-![image](https://github.com/user-attachments/assets/2a93a39d-eef4-4b8a-b324-d53a45dffc40)
 Patient-driven workflow
+![image](https://github.com/user-attachments/assets/2a93a39d-eef4-4b8a-b324-d53a45dffc40)
 
 🎥 **[YouTube Demo Video](https://youtube.com/your_demo_link_here)**
 ---
