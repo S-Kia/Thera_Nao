@@ -39,7 +39,7 @@
 - Uses upper-body detection to adjust distance and begin massage
 
 ### Exercise Demo & Practice
-- Uses MMPose for prerecorded postures (high accuracy)
+- Uses MMPose for pre-recorded postures (high accuracy), extracted from [this YouTube video](https://www.youtube.com/watch?v=KPWBUYpsWSY)
 - Uses MediaPipe for real-time mirroring using the robot's camera
 
 ### AI Workflow (Dify)
