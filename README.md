@@ -1,8 +1,12 @@
+# 🤖 Thera NAO – Multimodal AI Physiotherapy Robot System
+
 ![Thera NAO System Workflow]
 
 ![image](https://github.com/user-attachments/assets/2a93a39d-eef4-4b8a-b324-d53a45dffc40)
+Patient-driven workflow
 
 🎥 **[YouTube Demo Video](https://youtube.com/your_demo_link_here)**
+---
 
 🤖 **NAO Greeting Session – Voice-Based Patient Onboarding**  
 This module enables a NAO robot to greet patients and register them for physiotherapy sessions using voice interaction. It runs entirely on NAO’s onboard Python 2.7 environment, using keyword-based intent recognition and predefined empathetic responses to collect patient details like ID, reason for visit, pain level, and assigned doctor.
