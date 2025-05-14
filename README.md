@@ -43,7 +43,7 @@ This module enables the NAO robot to function as an intelligent physiotherapy as
 - `sounds.py`: Plays ambient music to enhance patient relaxation.  
 - `get_camera.py`: Captures image frames from the NAO robot camera.
 
-👉 Visit the `main` branch to explore the full massage and exercise system.
+👉 Visit the `massage` branch to explore the full massage and exercise system.
 
 ---
 
